@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
         mathoperation = findViewById(R.id.mathoperation)
         btn_0 = findViewById(R.id.btn_0)
         btn_1 = findViewById(R.id.btn_1)
@@ -59,10 +61,9 @@ class MainActivity : AppCompatActivity() {
         ac_btn = findViewById(R.id.ac_btn)
         ravno_btn = findViewById(R.id.ravno_btn)
         btn_toch = findViewById(R.id.btn_toch)
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        btn_back = findViewById(R.id.btn_back)
 
-       btn_0.setOnClickListener { setTextFields("0") }
+        btn_0.setOnClickListener { setTextFields("0") }
         btn_1.setOnClickListener { setTextFields("1") }
         btn_2.setOnClickListener { setTextFields("2") }
         btn_3.setOnClickListener { setTextFields("3") }
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity() {
 
         ac_btn.setOnClickListener {
             mathoperation.text =  ""
-result_text.text = ""
+            result_text.text = ""
         }
 
         btn_back.setOnClickListener {
@@ -104,7 +105,7 @@ val ex = ExpressionBuilder(mathoperation.text.toString()).build()
                     result_text.text = result.toString()
 
             } catch (e:Exception) {
-                Log.d("Ашыбка", "сообщение: ${e.message}")
+                Log.d("Ашыбка природы", "сообщение: ${e.message}")
 
             }
         }
@@ -113,9 +114,8 @@ fun setTextFields(str: String) {
     if(result_text.text != "") {
         mathoperation.text = result_text.text
         result_text.text = ""
+        }
+        mathoperation.append(str)
     }
-mathoperation.append(str)
-
-}
 
 }
